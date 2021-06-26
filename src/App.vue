@@ -1,5 +1,23 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <button ref="click-event" @click="counter++">{{ counter }}</button>
+    <form
+      ref="form"
+      @submit.prevent="() => (submitMessage = 'submit without refresh')"
+    >
+      <div ref="submit-message">{{ submitMessage }}</div>
+      <button type="submit">submit</button>
+    </form>
+    <button
+      ref="ctrl-click"
+      v-on:click.ctrl="displayHiddenMessage = !displayHiddenMessage"
+    >
+      Do something
+    </button>
+    <div ref="hidden-element" v-show="displayHiddenMessage">
+      Should be display after ctrl click combination
+    </div>
+  </div>
 </template>
 
 <script>
