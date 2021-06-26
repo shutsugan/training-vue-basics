@@ -1,5 +1,10 @@
 <template>
-  <div class="app"></div>
+  <div class="app">
+    <div class="number" v-for="number in numbers" :key="number">
+      {{ number }}
+    </div>
+    <div class="item" v-for="(value, key) of list" :key="key">{{ value }}</div>
+  </div>
 </template>
 
 <script>
