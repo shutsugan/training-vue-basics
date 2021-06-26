@@ -8,18 +8,28 @@
       Mark as Disabled
     </button>
 
-    <div ref="active">
+    <div ref="active" :class="{ active: state === 'active' }">
       I Should turn blue whene the state is active
     </div>
-    <div ref="error">
+    <div ref="error" :class="{ error: state === 'error' }">
       I should turn red whene state is error
     </div>
-    <button ref="disabled" @click="() => setState('error-disabled')">
+    <button
+      ref="disabled"
+      :class="{ disabled: state === 'disabled' }"
+      @click="() => setState('error-disabled')"
+    >
       I Should be disabled whene state is disabled, if enabled on click change
       the state to "error-disabled"
     </button>
 
-    <div ref="error-disabled">
+    <div
+      ref="error-disabled"
+      :class="[
+        { error: state === 'error-disabled' },
+        { disabled: state === 'error-disabled' },
+      ]"
+    >
       I should contain error and disable classes whene state is error-disabled
     </div>
   </div>
