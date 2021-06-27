@@ -1,5 +1,9 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <Message :message="message" />
+    <Counter :initValue="initValue" />
+    <List :list="list" />
+  </div>
 </template>
 
 <script>
@@ -10,8 +14,16 @@
 // and by clicking the button the count should increament without mutating the prop
 //3. create a component that expect a list a prop and displays the items
 
+import Message from "./components/Message.vue";
+import Counter from "./components/Counter";
+import List from "./components/List.vue";
 export default {
   name: "App",
+  components: {
+    Message,
+    Counter,
+    List,
+  },
   data() {
     return {
       message: "The message to be dispalyed",
