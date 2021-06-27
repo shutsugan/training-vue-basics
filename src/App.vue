@@ -1,5 +1,12 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <div ref="items" v-for="item in reversedList" :key="item">{{ item }}</div>
+    <div ref="name">{{ getFullName }}</div>
+    <input ref="set-name" v-model="name" />
+    <button ref="compute-name" @click="changeName">Change name</button>
+    <br />
+    <div ref="name-changed">Name changed: {{ changed }}</div>
+  </div>
 </template>
 
 <script>
@@ -15,6 +22,30 @@ export default {
       name: "Jogn Doe",
       changed: false,
     };
+  },
+  computed: {
+    reversedList() {
+      return [...this.list].reverse();
+    },
+    getFullName: {
+      get() {
+        return this.name;
+      },
+      set(newName) {
+        const [first, last] = newName.split(" ");
+        this.name = `${last ?? ""} ${first ?? ""}`.trim();
+      },
+    },
+  },
+  watch: {
+    getFullName() {
+      this.changed = true;
+    },
+  },
+  methods: {
+    changeName() {
+      this.getFullName = this.name;
+    },
   },
 };
 </script>
