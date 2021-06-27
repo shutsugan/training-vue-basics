@@ -1,5 +1,49 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <input ref="input" v-model="message" />
+    <span ref="input-message">input message: {{ message }}</span>
+    <br />
+    <input id="checkbox" ref="checkbox" type="checkbox" v-model="checked" />
+    <label ref="checkbox-label" for="checkbox">{{ checked }}</label>
+    <br />
+    <input
+      :ref="`checkobx-multi-1`"
+      type="checkbox"
+      value="john"
+      v-model="checkedNames"
+    />
+    <label>john</label>
+    <input
+      :ref="`checkobx-multi-2`"
+      type="checkbox"
+      value="doe"
+      v-model="checkedNames"
+    />
+    <label>doe</label>
+    <br />
+    <input type="radio" ref="radio-a" value="A" v-model="picked" />
+    <label>A</label>
+    <input type="radio" ref="radio-b" value="B" v-model="picked" />
+    <label>B</label>
+    <br />
+    <select ref="select" v-model="selected">
+      <option disabled value="">Select a letter</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <span ref="select-message">Selected: {{ selected }}</span>
+    <br />
+    <select ref="select-multi" v-model="multiSelected" multiple>
+      <option>checkbox</option>
+      <option>radio</option>
+      <option>input</option>
+    </select>
+    <br />
+    <span ref="select-multi-message">
+      types: {{ multiSelected.join(", ") }}
+    </span>
+  </div>
 </template>
 
 <script>
